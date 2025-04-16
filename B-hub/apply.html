@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now | B-Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #000000;
+            --accent-color: #fed500;
+            --red-accent: #c3452e;
+            --orange-accent: #f9a826;
+            --green-accent: #6b7d47;
+            --light-bg: #f5f5f5;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-text);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header and Navigation */
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text {
+            color: var(--light-text);
+            margin-left: 10px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('pictures/Page Header Background.png') center/cover no-repeat;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text);
+            padding-top: 80px;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Application Section */
+        .application-section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 0.5rem auto 0;
+        }
+        
+        .application-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+        
+        /* Form Styles */
+        .application-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .form-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            flex: 1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.7rem center;
+            background-size: 1em;
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            margin-right: 0.5rem;
+        }
+        
+        .checkbox-group {
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .checkbox-option input {
+            margin-right: 0.5rem;
+        }
+        
+        .form-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .form-required {
+            color: #e74c3c;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-color);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border-color: var(--primary-color);
+        }
+        
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-upload-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--light-bg);
+            border: 1px dashed #aaa;
+            border-radius: 5px;
+            color: #666;
+            text-align: center;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .file-upload:hover .file-upload-button {
+            background-color: #eaeaea;
+            border-color: #999;
+        }
+        
+        .file-name {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Progress Indicator */
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+        
+        .progress-step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 33.333%;
+        }
+        
+        .step-indicator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .progress-step.active .step-indicator {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .progress-step.completed .step-indicator {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+        
+        .progress-step.completed .step-indicator::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+        
+        .step-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Form Steps */
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        /* Submission Success */
+        .submission-success {
+            text-align: center;
+            padding: 3rem;
+            background-color: #f1f9f6;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #2ecc71;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin-top: 0.5rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                height: calc(100vh - 80px);
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="pictures/Bhub_logo.jpg" alt="B-Hub Logo">
+                <span class="logo-text">B-HUB</span>
+            </div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="apply.html" class="btn" style="padding: 0.5rem 1rem; margin-left: 0;">Apply Now</a></li>
+                </ul>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Apply to B-Hub</h1>
+            <p>Take the first step towards transforming your future and becoming part of our elite cohort</p>
+        </div>
+    </div>
+
+    <!-- Application Section -->
+    <section class="application-section">
+        <div class="container">
+            <div class="application-intro">
+                <h2 class="section-title">Application Form</h2>
+                <p>Thank you for your interest in joining B-Hub. Please complete the application form below to begin your journey with us. Our admissions team will review your application and reach out to you regarding the next steps in the process.</p>
+            </div>
+            
+            <!-- Progress Indicator -->
+            <div class="progress-bar">
+                <div class="progress-step active" id="step1Indicator">
+                    <div class="step-indicator">1</div>
+                    <div class="step-title">Personal Information</div>
+                </div>
+                <div class="progress-step" id="step2Indicator">
+                    <div class="step-indicator">2</div>
+                    <div class="step-title">Academic Details</div>
+                </div>
+                <div class="progress-step" id="step3Indicator">
+                    <div class="step-indicator">3</div>
+                    <div class="step-title">Statement of Purpose</div>
+                </div>
+            </div>
+            
+            <!-- Application Form -->
+            <div class="application-form-container">
+                <form id="applicationForm">
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-step active" id="step1">
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name <span class="form-required">*</span></label>
+                                    <input type="text" id="firstName" name="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name <span class="form-required">*</span></label>
+                                    <input type="text" id="lastName" name="lastName" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address <span class="form-required">*</span></label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number <span class="form-required">*</span></label>
+                                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="dob">Date of Birth <span class="form-required">*</span></label>
+                                    <input type="date" id="dob" name="dob" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender <span class="form-required">*</span></label>
+                                    <div class="radio-group">
+                                        <div class="radio-option">
+                                            <input type="radio" id="male" name="gender" value="male" required>
+                                            <label for="male">Male</label>
+                                        </div>
+                                        <div class="radio-option">
+                                            <input type="radio" id="female" name="gender" value="female">
+                                            <label for="female">Female</label>
+                                        </div>
+                                        <div class="radio-option">
+                                            <input type="radio" id="other" name="gender" value="other">
+                                            <label for="other">Other</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Contact Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="address">Address <span class="form-required">*</span></label>
+                                <textarea id="address" name="address" class="form-control" required></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City <span class="form-required">*</span></label>
+                                    <input type="text" id="city" name="city" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State <span class="form-required">*</span></label>
+                                    <input type="text" id="state" name="state" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="pincode">PIN Code <span class="form-required">*</span></label>
+                                    <input type="text" id="pincode" name="pincode" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">Country <span class="form-required">*</span></label>
+                                    <input type="text" id="country" name="country" class="form-control" value="India" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <div></div>
+                            <button type="button" class="btn" id="step1Next">Next: Academic Details</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Academic Details -->
+                    <div class="form-step" id="step2">
+                        <div class="form-section">
+                            <h3>12th Grade / Higher Secondary Details</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="schoolName">School Name <span class="form-required">*</span></label>
+                                    <input type="text" id="schoolName" name="schoolName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="board">Board <span class="form-required">*</span></label>
+                                    <select id="board" name="board" class="form-control" required>
+                                        <option value="">Select Board</option>
+                                        <option value="CBSE">CBSE</option>
+                                        <option value="ICSE">ICSE</option>
+                                        <option value="State Board">State Board</option>
+                                        <option value="IB">International Baccalaureate</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="stream">Stream <span class="form-required">*</span></label>
+                                    <select id="stream" name="stream" class="form-control" required>
+                                        <option value="">Select Stream</option>
+                                        <option value="Science">Science</option>
+                                        <option value="Commerce">Commerce</option>
+                                        <option value="Arts">Arts</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="passingYear">Year of Passing <span class="form-required">*</span></label>
+                                    <select id="passingYear" name="passingYear" class="form-control" required>
+                                        <option value="">Select Year</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2020">2020</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="percentage">Percentage / CGPA <span class="form-required">*</span></label>
+                                    <input type="text" id="percentage" name="percentage" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="marksheet">Upload 12th Marksheet <span class="form-required">*</span></label>
+                                    <div class="file-upload">
+                                        <div class="file-upload-button">
+                                            <i class="fas fa-upload"></i> Choose File
+                                        </div>
+                                        <input type="file" id="marksheet" name="marksheet" class="file-upload-input" accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <div class="file-name" id="marksheetFileName">No file chosen</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Other Academic Achievements</h3>
+                            
+                            <div class="form-group">
+                                <label for="achievements">Academic Achievements, Competitions, Olympiads, etc.</label>
+                                <textarea id="achievements" name="achievements" class="form-control" placeholder="Please mention any academic achievements, competitions you've participated in, or awards you've received."></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Extracurricular Activities</label>
+                                    <div class="checkbox-group">
+                                        <div class="checkbox-option">
+                                            <input type="checkbox" id="sports" name="activities[]" value="Sports">
+                                            <label for="sports">Sports</label>
+                                        </div>
+                                        <div class="checkbox-option">
+                                            <input type="checkbox" id="music" name="activities[]" value="Music">
+                                            <label for="music">Music</label>
+                                        </div>
+                                        <div class="checkbox-option">
+                                            <input type="checkbox" id="dance" name="activities[]" value="Dance">
+                                            <label for="dance">Dance</label>
+                                        </div>
+                                        <div class="checkbox-option">
+                                            <input type="checkbox" id="debate" name="activities[]" value="Debate">
+                                            <label for="debate">Debate</label>
+                                        </div>
+                                        <div class="checkbox-option">
+                                            <input type="checkbox" id="other-activity" name="activities[]" value="Other">
+                                            <label for="other-activity">Other</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="positions">Leadership Positions Held</label>
+                                    <textarea id="positions" name="positions" class="form-control" placeholder="Any leadership positions you've held in school or elsewhere."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="step2Prev">Previous</button>
+                            <button type="button" class="btn" id="step2Next">Next: Statement of Purpose</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Statement of Purpose -->
+                    <div class="form-step" id="step3">
+                        <div class="form-section">
+                            <h3>Program Selection</h3>
+                            
+                            <div class="form-group">
+                                <label>Which program are you interested in? <span class="form-required">*</span></label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="bba-cat" name="program" value="BBA + CAT" required>
+                                        <label for="bba-cat">BBA + CAT Preparation</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="leadership" name="program" value="Leadership">
+                                        <label for="leadership">Leadership Development</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="comprehensive" name="program" value="Comprehensive">
+                                        <label for="comprehensive">Comprehensive Program (All three)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Statement of Purpose</h3>
+                            
+                            <div class="form-group">
+                                <label for="whyBHub">Why do you want to join B-Hub? <span class="form-required">*</span></label>
+                                <textarea id="whyBHub" name="whyBHub" class="form-control" rows="5" required placeholder="Please explain your motivation for joining B-Hub and how you believe it will help you achieve your career goals."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="career">What are your career aspirations? <span class="form-required">*</span></label>
+                                <textarea id="career" name="career" class="form-control" rows="5" required placeholder="Describe your short-term and long-term career goals."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="strengths">What are your key strengths and areas of improvement? <span class="form-required">*</span></label>
+                                <textarea id="strengths" name="strengths" class="form-control" rows="5" required placeholder="Please share your key strengths and areas where you wish to improve."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Additional Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="referral">How did you hear about B-Hub?</label>
+                                <select id="referral" name="referral" class="form-control">
+                                    <option value="">Select Option</option>
+                                    <option value="School Counselor">School Counselor</option>
+                                    <option value="Friends/Family">Friends/Family</option>
+                                    <option value="Social Media">Social Media</option>
+                                    <option value="Internet Search">Internet Search</option>
+                                    <option value="Newspaper">Newspaper</option>
+                                    <option value="Information Session">Information Session</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="additionalInfo">Any additional information you would like to share</label>
+                                <textarea id="additionalInfo" name="additionalInfo" class="form-control" rows="3" placeholder="Any other information that you think would be relevant to your application."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <label for="terms">I hereby declare that all the information provided by me is true and correct to the best of my knowledge. <span class="form-required">*</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="step3Prev">Previous</button>
+                            <button type="submit" class="btn" id="submitApplication">Submit Application</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Submission Success Message (Initially Hidden) -->
+                    <div class="submission-success" id="submissionSuccess">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h2>Application Submitted Successfully!</h2>
+                        <p>Thank you for applying to B-Hub. Your application has been received and is currently under review.</p>
+                        <p>You will receive a confirmation email shortly with details about the next steps in the application process.</p>
+                        <p>For any queries, please contact our admissions team at <strong>admissions@b-hub.edu</strong></p>
+                        <div style="margin-top: 2rem;">
+                            <a href="index.html" class="btn">Return to Homepage</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>B-Hub</h3>
+                    <p>An elite, post-12th education model designed to bridge the gap between academic learning and global employability.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="programs.html#bba-details">BBA Program</a></li>
+                        <li><a href="programs.html#cat-details">CAT Preparation</a></li>
+                        <li><a href="programs.html#leadership-details">Leadership Development</a></li>
+                        <li><a href="programs.html#program-details">Program Details</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="apply.html">Apply Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> B-Hub Campus, Andhra Pradesh</li>
+                        <li><i class="fas fa-phone"></i> +91 XXXXXXXXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@b-hub.edu</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 B-Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            if (navLinks.classList.contains('active')) {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Form Step Navigation
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        
+        const step1Indicator = document.getElementById('step1Indicator');
+        const step2Indicator = document.getElementById('step2Indicator');
+        const step3Indicator = document.getElementById('step3Indicator');
+        
+        const step1Next = document.getElementById('step1Next');
+        const step2Prev = document.getElementById('step2Prev');
+        const step2Next = document.getElementById('step2Next');
+        const step3Prev = document.getElementById('step3Prev');
+        
+        const applicationForm = document.getElementById('applicationForm');
+        const submissionSuccess = document.getElementById('submissionSuccess');
+        
+        // File upload handling
+        const marksheetInput = document.getElementById('marksheet');
+        const marksheetFileName = document.getElementById('marksheetFileName');
+        
+        marksheetInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                marksheetFileName.textContent = e.target.files[0].name;
+            } else {
+                marksheetFileName.textContent = 'No file chosen';
+            }
+        });
+        
+        // Step 1 Next Button
+        step1Next.addEventListener('click', () => {
+            // You can add validation here
+            const step1Fields = step1.querySelectorAll('[required]');
+            let isValid = true;
+            
+            step1Fields.forEach(field => {
+                if (!field.value) {
+                    isValid = false;
+                    field.style.borderColor = '#e74c3c';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (isValid) {
+                step1.classList.remove('active');
+                step2.classList.add('active');
+                
+                step1Indicator.classList.remove('active');
+                step1Indicator.classList.add('completed');
+                step2Indicator.classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                alert('Please fill in all required fields in this section.');
+            }
+        });
+        
+        // Step 2 Previous Button
+        step2Prev.addEventListener('click', () => {
+            step2.classList.remove('active');
+            step1.classList.add('active');
+            
+            step2Indicator.classList.remove('active');
+            step1Indicator.classList.remove('completed');
+            step1Indicator.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Step 2 Next Button
+        step2Next.addEventListener('click', () => {
+            // You can add validation here
+            const step2Fields = step2.querySelectorAll('[required]');
+            let isValid = true;
+            
+            step2Fields.forEach(field => {
+                if (!field.value) {
+                    isValid = false;
+                    field.style.borderColor = '#e74c3c';
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (isValid) {
+                step2.classList.remove('active');
+                step3.classList.add('active');
+                
+                step2Indicator.classList.remove('active');
+                step2Indicator.classList.add('completed');
+                step3Indicator.classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                alert('Please fill in all required fields in this section.');
+            }
+        });
+        
+        // Step 3 Previous Button
+        step3Prev.addEventListener('click', () => {
+            step3.classList.remove('active');
+            step2.classList.add('active');
+            
+            step3Indicator.classList.remove('active');
+            step2Indicator.classList.remove('completed');
+            step2Indicator.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Form Submission
+        applicationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // You can add validation here
+            const step3Fields = step3.querySelectorAll('[required]');
+            let isValid = true;
+            
+            step3Fields.forEach(field => {
+                if (!field.value && field.type !== 'radio' && field.type !== 'checkbox') {
+                    isValid = false;
+                    field.style.borderColor = '#e74c3c';
+                } else if ((field.type === 'radio' || field.type === 'checkbox') && !document.querySelector(`[name="${field.name}"]:checked`)) {
+                    isValid = false;
+                } else {
+                    if (field.type !== 'radio' && field.type !== 'checkbox') {
+                        field.style.borderColor = '#ddd';
+                    }
+                }
+            });
+            
+            if (isValid) {
+                // In a real application, you would send the form data to a server here
+                // For now, we'll just simulate a successful submission
+                
+                // Hide the form
+                applicationForm.style.display = 'none';
+                
+                // Show the success message
+                submissionSuccess.style.display = 'block';
+                
+                // Mark step 3 as completed
+                step3Indicator.classList.remove('active');
+                step3Indicator.classList.add('completed');
+                
+                // Scroll to the top of the page
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                alert('Please fill in all required fields in this section.');
+            }
+        });
+    </script>
+</body>
+</html>
